@@ -9,14 +9,6 @@ function resizeCanvas() {
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-// Preload images
-const playerImage = new Image();
-playerImage.src = 'images/player.png'; // Replace with the path to your player image
-
-const enemyImage = new Image();
-enemyImage.src = 'images/enemy.png'; // Replace with the path to your enemy image
-
-// Game variables
 const player = {
     x: canvas.width / 2,
     y: canvas.height - 100,
@@ -29,14 +21,6 @@ const player = {
 
 const weapons = {
     pistol: { damage: 10, fireRate: 300, bulletSpeed: 8, ammo: 30, maxAmmo: 30 },
-};
-
-const storm = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
-    radius: canvas.width / 2,
-    shrinkRate: 0.02,
-    damage: 1,
 };
 
 let bullets = [];
@@ -121,12 +105,6 @@ function update() {
 // Drawing everything on the canvas
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw storm
-    ctx.beginPath();
-    ctx.arc(storm.x, storm.y, storm.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255, 0, 0, 0.3)";
-    ctx.fill();
 
     // Draw player
     if (playerImage.complete) {
